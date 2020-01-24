@@ -1,3 +1,6 @@
+$(document).ready(function () {
+
+var quesries = [];
 
 $('#submit-btn').on('click', function (event) {
     event.preventDefault();
@@ -8,6 +11,18 @@ $('#submit-btn').on('click', function (event) {
     // add the search query to the queries array
     //queries.push(query);
     var queryURL = 'https://api.giphy.com/v1/gifs/search?api_key=l3BQXaVrqxak9wat1iZYciOAzYiTQlI1&q=' + query + '&limit=10&offset=0&rating=PG&lang=en'
-    //createButtons();
+    createButtons();
 })
 
+function createButtons(){
+
+    for (var i = 0; i < quesries.length; i++){
+        var btn = $('<button>');
+
+        btn.addClass('gif').attr('value', quesries[i]).text(quesries[i]);
+
+        $('.buttons').append(btn);
+    }
+}
+
+})
