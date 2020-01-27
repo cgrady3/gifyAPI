@@ -1,3 +1,4 @@
+// starter buttons
 var queries = ['funny cat', 'flowers', 'rainbow'];
 
 function createButtons() {
@@ -25,21 +26,23 @@ function showGIF() {
         url: queryURL,
         method: 'GET'
     }).then(function (response) {
+
         console.log(response.data);
 
-        for (let i = 0; response.data.images.length; i++) {
-            var image = $('<img>').attr('src', response.data.images[i].url);
+        for (let i = 0; i < response.data.length; i++) {
 
-            $('.main').prepend(images);
+            var image = $('<img>').attr('src', response.data[i].url);
+
+            //blocked cross site cookies?? these ain't helping -_-
+            image.attr('SameSite=None');
+            image.attr('Secure');
+
+            $('.main').prepend(image);
         }
     })
 }
 
 $(document).ready(function () {
-
-
-
-    console.log(queries)
 
     $('#submit-btn').on('click', function (event) {
         // prevent a button click from opening up to a new page
@@ -69,14 +72,11 @@ $(document).ready(function () {
             })
             $('.buttons').prepend(btn);
         }
+        console.log(queries)
     })
-
-
-
-
 
     $(document).on('click', '.gif', showGIF);
 
     createButtons();
-    //showGIF();
+    showGIF();
 })
