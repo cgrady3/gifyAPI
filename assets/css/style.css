@@ -6,3 +6,11 @@
     margin-top: 8px!important;
     margin-bottom: 17px!important;
 }
+
+.gif{
+    margin: 3px;
+}
+
+a:not([href]){
+    color: #ffffff;
+}
