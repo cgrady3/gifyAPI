@@ -1,8 +1,6 @@
 // starter buttons
 var queries = [];
 
-
-
 function showGIF(userQuery) {
 
     var queryURL = 'https://api.giphy.com/v1/gifs/search?api_key=l3BQXaVrqxak9wat1iZYciOAzYiTQlI1&q=' + userQuery + '&limit=10&offset=0&rating=PG&lang=en'
@@ -43,8 +41,11 @@ $(document).ready(function () {
 
                 // add the search query to the queries array
                 queries.push(query);
-            }
-            console.log(queries)
+
+                console.log(queries)
+
+                $('#userQuery').val('')
+            } 
         }
     })
 
@@ -52,7 +53,7 @@ $(document).ready(function () {
     $('#submit-btn').on('click', function (event) {
         // prevent a button click from opening up to a new page
         event.preventDefault();
-
+        
         // check that the user has entered a search term
         if ($('#userQuery').val() === '') {
             alert('Please enter a valid search term')
@@ -65,7 +66,10 @@ $(document).ready(function () {
 
             // add the search query to the queries array
             queries.push(query);
+
+            console.log(queries)
+
+            $('#userQuery').val('')
         }
-        console.log(queries)
     })
 })
